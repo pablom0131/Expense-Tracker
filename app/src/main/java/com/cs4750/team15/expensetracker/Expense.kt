@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.Date
 import java.util.UUID
 
+// schema
 @Entity
 data class Expense (
     @PrimaryKey val id: UUID,
