@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">ExpenseTracker</string>
+    <string name="expense_title_hint">Enter a title for the expense.</string>
+    <string name="expense_title_label">Title</string>
+    <string name="expense_details_label">Details</string>
+    <string name="expense_amount_hint">Enter expense amount.</string>
+    <string name="expense_amount_label">Amount</string>
+    <string name="expense_category_label">Category</string>
+    <string name="dollar_sign">$</string>
+    <string name="new_expense">New Expense</string>
+    <string-array name="expense_categories_array">
+        <item>Housing</item>
+        <item>Utilities</item>
+        <item>Transportation</item>
+        <item>Groceries</item>
+        <item>Convenience</item>
+        <item>Health</item>
+        <item>Insurance</item>
+        <item>Entertainment</item>
+        <Item>Shopping</Item>
+        <item>Home Improvement</item>
+        <Item>Education</Item>
+        <item>Debt Repayment</item>
+        <item>Gifts/Donations</item>
+        <item>Travel</item>
+        <item>Work-Related</item>
+        <item>Misc/Other</item>
+    </string-array>
 </resources>
