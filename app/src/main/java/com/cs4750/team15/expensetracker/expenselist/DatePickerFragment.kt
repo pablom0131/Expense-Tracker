@@ -13,7 +13,7 @@ import java.util.GregorianCalendar
 
 class DatePickerFragment: DialogFragment() {
 
-    private val args: com.cs4750.team15.expensetracker.expenselist.DatePickerFragmentArgs by navArgs()
+    private val args: DatePickerFragmentArgs by navArgs()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dateListener = DatePickerDialog.OnDateSetListener {

@@ -55,7 +55,7 @@ class ExpenseListFragment: Fragment() {
                     binding.expenseRecyclerView.adapter =
                         ExpenseListAdapter(expenses) { expenseId ->
                             findNavController().navigate(
-                                com.cs4750.team15.expensetracker.expenselist.ExpenseListFragmentDirections.showExpenseDetail(
+                                ExpenseListFragmentDirections.showExpenseDetail(
                                     expenseId
                                 )
                             )
@@ -92,11 +92,11 @@ class ExpenseListFragment: Fragment() {
                 title = "",
                 date = Date(),
                 amount = 0.0,
-                category = "misc/other"
+                category = "Misc/Other"
             )
             expenseListViewModel.addExpense(newExpense)
             findNavController().navigate(
-                com.cs4750.team15.expensetracker.expenselist.ExpenseListFragmentDirections.showExpenseDetail(
+                ExpenseListFragmentDirections.showExpenseDetail(
                     newExpense.id
                 )
             )
