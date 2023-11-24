@@ -45,7 +45,7 @@
                 android:text="@string/expense_title_label" />
 
             <EditText
-                android:id="@+id/crime_title"
+                android:id="@+id/expense_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/expense_title_hint"
@@ -100,6 +100,7 @@
         android:text="@string/expense_category_label" />
 
     <Spinner
+        android:id="@+id/expense_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
