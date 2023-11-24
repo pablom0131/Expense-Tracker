@@ -1,5 +1,6 @@
 package com.cs4750.team15.expensetracker.expenselist
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
@@ -19,10 +20,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cs4750.team15.expensetracker.databinding.FragmentExpenseDetailBinding
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import android.text.format.DateFormat
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.content.SharedPreferences
+import android.os.Handler
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.doOnLayout
@@ -40,7 +45,7 @@ class ExpenseDetailFragment: Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val args: com.cs4750.team15.expensetracker.expenselist.ExpenseDetailFragmentArgs by navArgs()
+    private val args: ExpenseDetailFragmentArgs by navArgs()
 
     private val expenseDetailViewModel: ExpenseDetailViewModel by viewModels {
         ExpenseDetailViewModelFactory(args.expenseId)
@@ -61,6 +66,9 @@ class ExpenseDetailFragment: Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private val SPINNER_PREF_KEY = "spinner_selected_item"
 
+    private val handler = Handler()
+    private val updateDelayMillis = 1000
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,6 +81,8 @@ class ExpenseDetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+
         binding.apply {
             expenseTitle.doOnTextChanged { text, _, _, _ ->
                 expenseDetailViewModel.updateExpense { oldExpense ->
@@ -81,9 +91,13 @@ class ExpenseDetailFragment: Fragment() {
             }
 
             expenseAmount.doOnTextChanged { text, _, _, _ ->
-                expenseDetailViewModel.updateExpense { oldExpense ->
-                    oldExpense.copy(amount = text.toString().toDouble())
-                }
+                handler.removeCallbacksAndMessages(null)
+
+                handler.postDelayed({
+                    expenseDetailViewModel.updateExpense { oldExpense ->
+                        oldExpense.copy(amount = if (text.toString().isBlank()) 0.0 else text.toString().toDouble())
+                    }
+                }, updateDelayMillis.toLong())
             }
 
             val spinner = expenseCategory
@@ -169,13 +183,12 @@ class ExpenseDetailFragment: Fragment() {
             expenseDate.text = DateFormat.format(BUTTON_DATE_FORMAT, expense.date)
             expenseDate.setOnClickListener {
                 findNavController().navigate(
-                    com.cs4750.team15.expensetracker.expenselist.ExpenseDetailFragmentDirections.selectDate(
+                    ExpenseDetailFragmentDirections.selectDate(
                         expense.date
                     )
                 )
             }
-            if (expenseAmount.text.toString().toDouble() != expense.amount)
-                expenseAmount.setText(expense.amount.toString())
+            if (expense.amount != 0.0) expenseAmount.setText(expense.amount.toString())
             updatePhoto(expense.photoFileName)
         }
     }
