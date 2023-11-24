@@ -1,11 +1,11 @@
-package com.cs4750.team15.expensetracker.database
+package com.cs4750.team15.expensetracker.expenselist.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Delete
-import com.cs4750.team15.expensetracker.Expense
+import com.cs4750.team15.expensetracker.expenselist.Expense
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 

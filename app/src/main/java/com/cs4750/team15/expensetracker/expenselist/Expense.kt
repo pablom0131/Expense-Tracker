@@ -1,4 +1,4 @@
-package com.cs4750.team15.expensetracker
+package com.cs4750.team15.expensetracker.expenselist
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

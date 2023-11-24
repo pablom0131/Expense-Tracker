@@ -1,4 +1,4 @@
-package com.cs4750.team15.expensetracker.database
+package com.cs4750.team15.expensetracker.expenselist.database
 
 import androidx.room.TypeConverter
 import java.util.Date

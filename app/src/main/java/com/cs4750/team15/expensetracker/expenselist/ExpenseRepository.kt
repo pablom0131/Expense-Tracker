@@ -1,8 +1,8 @@
-package com.cs4750.team15.expensetracker
+package com.cs4750.team15.expensetracker.expenselist
 
 import android.content.Context
 import androidx.room.Room
-import com.cs4750.team15.expensetracker.database.ExpenseDatabase
+import com.cs4750.team15.expensetracker.expenselist.database.ExpenseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow

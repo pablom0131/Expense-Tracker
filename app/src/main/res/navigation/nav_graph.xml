@@ -6,7 +6,7 @@
     app:startDestination="@id/expenseListFragment">
     <fragment
         android:id="@+id/expenseListFragment"
-        android:name="com.cs4750.team15.expensetracker.ExpenseListFragment"
+        android:name="com.cs4750.team15.expensetracker.expenselist.ExpenseListFragment"
         android:label="ExpenseListFragment"
         tools:layout="@layout/fragment_expense_list" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/expenseDetailFragment"
-        android:name="com.cs4750.team15.expensetracker.ExpenseDetailFragment"
+        android:name="com.cs4750.team15.expensetracker.expenselist.ExpenseDetailFragment"
         android:label="ExpenseDetailFragment"
         tools:layout="@layout/fragment_expense_detail" >
         <argument
@@ -27,7 +27,7 @@
     </fragment>
     <dialog
         android:id="@+id/datePickerFragment"
-        android:name="com.cs4750.team15.expensetracker.DatePickerFragment"
+        android:name="com.cs4750.team15.expensetracker.expenselist.DatePickerFragment"
         android:label="DatePickerFragment" >
         <argument
             android:name="crimeDate"

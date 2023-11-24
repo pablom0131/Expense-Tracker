@@ -1,4 +1,4 @@
-package com.cs4750.team15.expensetracker
+package com.cs4750.team15.expensetracker.expenselist
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -13,7 +13,7 @@ import java.util.GregorianCalendar
 
 class DatePickerFragment: DialogFragment() {
 
-    private val args: DatePickerFragmentArgs by navArgs()
+    private val args: com.cs4750.team15.expensetracker.expenselist.DatePickerFragmentArgs by navArgs()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dateListener = DatePickerDialog.OnDateSetListener {

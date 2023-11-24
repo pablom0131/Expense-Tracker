@@ -1,4 +1,4 @@
-package com.cs4750.team15.expensetracker
+package com.cs4750.team15.expensetracker.expenselist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cs4750.team15.expensetracker.R
 import com.cs4750.team15.expensetracker.databinding.FragmentExpenseListBinding
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -54,7 +55,9 @@ class ExpenseListFragment: Fragment() {
                     binding.expenseRecyclerView.adapter =
                         ExpenseListAdapter(expenses) { expenseId ->
                             findNavController().navigate(
-                                ExpenseListFragmentDirections.showExpenseDetail(expenseId)
+                                com.cs4750.team15.expensetracker.expenselist.ExpenseListFragmentDirections.showExpenseDetail(
+                                    expenseId
+                                )
                             )
                         }
                 }
@@ -93,7 +96,9 @@ class ExpenseListFragment: Fragment() {
             )
             expenseListViewModel.addExpense(newExpense)
             findNavController().navigate(
-                ExpenseListFragmentDirections.showExpenseDetail(newExpense.id)
+                com.cs4750.team15.expensetracker.expenselist.ExpenseListFragmentDirections.showExpenseDetail(
+                    newExpense.id
+                )
             )
         }
     }

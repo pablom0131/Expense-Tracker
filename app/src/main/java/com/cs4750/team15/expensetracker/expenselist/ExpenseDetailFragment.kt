@@ -1,4 +1,4 @@
-package com.cs4750.team15.expensetracker
+package com.cs4750.team15.expensetracker.expenselist
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -26,6 +26,7 @@ import android.content.SharedPreferences
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.doOnLayout
+import com.cs4750.team15.expensetracker.R
 import java.io.File
 import java.util.Date
 
@@ -39,7 +40,7 @@ class ExpenseDetailFragment: Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val args: ExpenseDetailFragmentArgs by navArgs()
+    private val args: com.cs4750.team15.expensetracker.expenselist.ExpenseDetailFragmentArgs by navArgs()
 
     private val expenseDetailViewModel: ExpenseDetailViewModel by viewModels {
         ExpenseDetailViewModelFactory(args.expenseId)
@@ -168,7 +169,9 @@ class ExpenseDetailFragment: Fragment() {
             expenseDate.text = DateFormat.format(BUTTON_DATE_FORMAT, expense.date)
             expenseDate.setOnClickListener {
                 findNavController().navigate(
-                    ExpenseDetailFragmentDirections.selectDate(expense.date)
+                    com.cs4750.team15.expensetracker.expenselist.ExpenseDetailFragmentDirections.selectDate(
+                        expense.date
+                    )
                 )
             }
             if (expenseAmount.text.toString().toDouble() != expense.amount)

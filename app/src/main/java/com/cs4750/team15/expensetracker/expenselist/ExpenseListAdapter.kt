@@ -1,8 +1,7 @@
-package com.cs4750.team15.expensetracker
+package com.cs4750.team15.expensetracker.expenselist
 
 import android.text.format.DateFormat
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cs4750.team15.expensetracker.databinding.ListItemExpenseBinding
@@ -14,7 +13,6 @@ class ExpenseHolder(private val binding: ListItemExpenseBinding): RecyclerView.V
     fun bind(expense: Expense, onExpenseClicked: (expenseId: UUID) -> Unit) {
         binding.expenseTitle.text = expense.title
         binding.expenseDate.text = DateFormat.format(DATE_FORMAT, expense.date)
-        // binding.expenseAmount.text = expense.amount
 
         binding.root.setOnClickListener {
             onExpenseClicked(expense.id)
