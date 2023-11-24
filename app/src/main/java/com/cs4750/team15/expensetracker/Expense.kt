@@ -11,7 +11,7 @@ data class Expense (
     @PrimaryKey val id: UUID,
     val title: String,
     val date: Date,
-    val amount: Int,
+    val amount: Double,
     val category: String,
     val photoFileName: String? = null
 )
