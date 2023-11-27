@@ -13,6 +13,8 @@ class ExpenseHolder(private val binding: ListItemExpenseBinding): RecyclerView.V
     fun bind(expense: Expense, onExpenseClicked: (expenseId: UUID) -> Unit) {
         binding.expenseTitle.text = expense.title
         binding.expenseDate.text = DateFormat.format(DATE_FORMAT, expense.date)
+        binding.expenseAmount.text = "$" + expense.amount.toString()
+        binding.expenseCategory.text = "⚭ " + expense.category
 
         binding.root.setOnClickListener {
             onExpenseClicked(expense.id)
