@@ -29,6 +29,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.content.SharedPreferences
 import android.os.Handler
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -73,6 +76,11 @@ class ExpenseDetailFragment: Fragment() {
     private val updateDelayMillis = 1000
 
     private lateinit var currTitle: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -247,6 +255,27 @@ class ExpenseDetailFragment: Fragment() {
                 binding.expenseReceiptPhoto.setImageBitmap(null)
                 binding.expenseReceiptPhoto.tag = null
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.fragment_expense_detail, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.delete_expense -> {
+                deleteExpense()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    private fun deleteExpense() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            expenseDetailViewModel.deleteExpense()
+            findNavController().popBackStack()
         }
     }
 }

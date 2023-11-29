@@ -28,6 +28,9 @@ class ExpenseDetailViewModel(expenseId: UUID): ViewModel() {
         }
     }
 
+    suspend fun deleteExpense(){
+        _expense.value?.let { expenseRepository.deleteExpense(it) }
+    }
     override fun onCleared() {
         super.onCleared()
 

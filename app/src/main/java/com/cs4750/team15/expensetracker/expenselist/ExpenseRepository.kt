@@ -38,6 +38,10 @@ class ExpenseRepository private constructor(
         database.expenseDao().addExpense(expense)
     }
 
+    suspend fun deleteExpense(expense: Expense) {
+        database.expenseDao().deleteExpense(expense)
+    }
+
     companion object {
         private var INSTANCE: ExpenseRepository? = null
 
