@@ -8,6 +8,7 @@
     <string name="expense_category_label">Category</string>
     <string name="dollar_sign">$</string>
     <string name="new_expense">New Expense</string>
+    <string name="home">Home</string>
     <string-array name="expense_categories_array">
         <item>Housing</item>
         <item>Utilities</item>
