@@ -1,5 +1,6 @@
 package com.cs4750.team15.expensetracker.expenselist
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -28,6 +29,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.content.SharedPreferences
 import android.os.Handler
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.doOnLayout
@@ -69,6 +72,8 @@ class ExpenseDetailFragment: Fragment() {
     private val handler = Handler()
     private val updateDelayMillis = 1000
 
+    private lateinit var currTitle: String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -85,6 +90,7 @@ class ExpenseDetailFragment: Fragment() {
 
         binding.apply {
             expenseTitle.doOnTextChanged { text, _, _, _ ->
+                currTitle = text.toString()
                 expenseDetailViewModel.updateExpense { oldExpense ->
                     oldExpense.copy(title = text.toString())
                 }
@@ -169,6 +175,24 @@ class ExpenseDetailFragment: Fragment() {
                 bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as Date
             expenseDetailViewModel.updateExpense { it.copy(date = newDate) }
         }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (currTitle.isNotEmpty())
+                    findNavController().popBackStack()
+                else{
+                    val alertDialog = AlertDialog.Builder(context)
+                        .setMessage("Expense title cannot be empty")
+                        .setPositiveButton("OK") {dialog, _, ->
+                            dialog.dismiss()
+                        }
+                        .create()
+                    alertDialog.show()
+                }
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     override fun onDestroyView() {
