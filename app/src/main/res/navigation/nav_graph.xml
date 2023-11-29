@@ -30,7 +30,7 @@
         android:name="com.cs4750.team15.expensetracker.expenselist.DatePickerFragment"
         android:label="DatePickerFragment" >
         <argument
-            android:name="crimeDate"
+            android:name="expenseDate"
             app:argType="java.util.Date" />
     </dialog>
 
