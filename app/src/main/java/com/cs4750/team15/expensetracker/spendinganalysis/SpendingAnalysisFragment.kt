@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.cs4750.team15.expensetracker.databinding.SpendingAnalysisBinding
+import com.cs4750.team15.expensetracker.databinding.FragmentSpendingAnalysisBinding
 
 class SpendingAnalysisFragment: Fragment() {
-    private var _binding: SpendingAnalysisBinding? = null
+    private var _binding: FragmentSpendingAnalysisBinding? = null
     private val binding
         get() = checkNotNull(_binding){
             "Cannot access binding"
@@ -19,7 +19,7 @@ class SpendingAnalysisFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = SpendingAnalysisBinding.inflate(inflater, container, false)
+        _binding = FragmentSpendingAnalysisBinding.inflate(inflater, container, false)
 
         return binding.root
     }
