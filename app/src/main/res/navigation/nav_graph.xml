@@ -37,7 +37,7 @@
         android:id="@+id/welcomeFragment"
         android:name="com.cs4750.team15.expensetracker.WelcomeFragment"
         android:label="WelcomeFragment"
-        tools:layout="@layout/welcome_screen">
+        tools:layout="@layout/fragment_welcome_screen">
         <action
             android:id="@+id/show_expense_list"
             app:destination="@id/expenseListFragment" />
@@ -49,6 +49,6 @@
         android:id="@+id/spendingAnalysisFragment"
         android:name="com.cs4750.team15.expensetracker.spendinganalysis.SpendingAnalysisFragment"
         android:label="SpendingAnalysisFragment"
-        tools:layout="@layout/spending_analysis"/>
+        tools:layout="@layout/fragment_spending_analysis"/>
 
 </navigation>

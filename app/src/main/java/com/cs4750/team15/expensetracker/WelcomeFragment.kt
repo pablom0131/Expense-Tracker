@@ -1,18 +1,16 @@
 package com.cs4750.team15.expensetracker
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.cs4750.team15.expensetracker.databinding.WelcomeScreenBinding
+import com.cs4750.team15.expensetracker.databinding.FragmentWelcomeScreenBinding
 
 class WelcomeFragment: Fragment() {
 
-    private var _binding: WelcomeScreenBinding? = null
+    private var _binding: FragmentWelcomeScreenBinding? = null
     private val binding
         get() = checkNotNull(_binding){
             "Cannot access binding"
@@ -23,7 +21,7 @@ class WelcomeFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = WelcomeScreenBinding.inflate(inflater, container, false)
+        _binding = FragmentWelcomeScreenBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -39,6 +37,8 @@ class WelcomeFragment: Fragment() {
             spendingAnalysisButton.setOnClickListener {
                 findNavController().navigate(WelcomeFragmentDirections.showSpendingAnalysis())
             }
+
+            chatButton.setOnClickListener {  }
         }
     }
 
