@@ -35,6 +35,10 @@ class WelcomeFragment: Fragment() {
             expenseListButton.setOnClickListener {
                 findNavController().navigate(WelcomeFragmentDirections.showExpenseList())
             }
+
+            spendingAnalysisButton.setOnClickListener {
+                findNavController().navigate(WelcomeFragmentDirections.showSpendingAnalysis())
+            }
         }
     }
 

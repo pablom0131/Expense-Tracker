@@ -41,6 +41,14 @@
         <action
             android:id="@+id/show_expense_list"
             app:destination="@id/expenseListFragment" />
+        <action
+            android:id="@+id/show_spending_analysis"
+            app:destination="@id/spendingAnalysisFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/spendingAnalysisFragment"
+        android:name="com.cs4750.team15.expensetracker.SpendingAnalysisFragment"
+        android:label="SpendingAnalysisFragment"
+        tools:layout="@layout/spending_analysis"/>
 
 </navigation>
