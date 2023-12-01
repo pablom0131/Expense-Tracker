@@ -4,11 +4,16 @@
         <item>@font/balsamiq_sans_bold</item>
         <item>@font/bevan</item>
         <item>@font/cabin_bold</item>
+        <item>@font/dm_mono_medium</item>
         <item>@font/gelasio_bold</item>
         <item>@font/lilita_one</item>
+        <item>@font/michroma</item>
         <item>@font/open_sans_extrabold</item>
+        <item>@font/palanquin_dark</item>
+        <item>@font/sawarabi_mincho</item>
         <item>@font/secular_one</item>
         <item>@font/seymour_one</item>
+        <item>@font/syncopate</item>
         <item>@font/syncopate_bold</item>
         <item>@font/yantramanav_black</item>
     </array>
