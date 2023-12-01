@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/balsamiq_sans_bold</item>
+        <item>@font/bevan</item>
+        <item>@font/cabin_bold</item>
+        <item>@font/gelasio_bold</item>
+        <item>@font/lilita_one</item>
+        <item>@font/open_sans_extrabold</item>
+        <item>@font/secular_one</item>
+        <item>@font/seymour_one</item>
+        <item>@font/syncopate_bold</item>
+        <item>@font/yantramanav_black</item>
+    </array>
+</resources>
