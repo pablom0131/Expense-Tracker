@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ExpenseTracker</string>
+    <string name="app_name">PennyWise</string>
     <string name="expense_title_hint">Enter a title for the expense.</string>
     <string name="expense_title_label">Title</string>
     <string name="expense_details_label">Details</string>
