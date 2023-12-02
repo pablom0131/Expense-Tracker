@@ -8,7 +8,6 @@
     <string name="expense_category_label">Category</string>
     <string name="dollar_sign">$</string>
     <string name="new_expense">New Expense</string>
-    <string name="home">Home</string>
     <string name="delete_expense">Delete Expense</string>
     <string name="budget_amount_hint">Enter your monthly budget.</string>
     <string name="budget_amount_title">Your monthly budget</string>
