@@ -165,7 +165,7 @@ class ExpenseDetailFragment: Fragment() {
                 requireContext(),
                 Uri.parse("")
             )
-            expenseReceiptPhoto.isEnabled = canResolveIntent(captureImageIntent)
+            receiptCamera.isEnabled = canResolveIntent(captureImageIntent)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
