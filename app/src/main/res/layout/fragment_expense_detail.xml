@@ -29,7 +29,7 @@
                 android:id="@+id/crime_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_receipt"/>
+                android:src="@drawable/ic_receipt" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,8 +41,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="@font/dm_mono_medium"
+                android:text="@string/expense_title_label"
                 android:textAppearance="?attr/textAppearanceHeadline5"
-                android:text="@string/expense_title_label" />
+                android:textColor="@color/honeydew"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/expense_title"
@@ -58,8 +62,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/dm_mono_medium"
+        android:text="Date"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="@string/expense_details_label" />
+        android:textColor="@color/honeydew"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/expense_date"
@@ -67,11 +75,20 @@
         android:layout_height="wrap_content"
         tools:text="January 1, 2023" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/dm_mono_medium"
+        android:text="@string/expense_amount_label"
+        android:textAlignment="viewStart"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="@string/expense_amount_label" />
+        android:textColor="@color/honeydew"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,14 +110,22 @@
             android:inputType="numberDecimal" />
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/dm_mono_medium"
+        android:text="@string/expense_category_label"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="@string/expense_category_label" />
+        android:textColor="@color/honeydew"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/expense_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp" />
 </LinearLayout>

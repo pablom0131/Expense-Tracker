@@ -12,8 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/dm_mono_medium"
         android:text="Expense Title"
         android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +26,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/dm_mono_medium"
         android:text="Expense Date"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/dm_mono_medium"
         android:text="Expense Amount"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="51dp"
+        android:fontFamily="@font/dm_mono_medium"
         android:text="Expense Category"
         app:layout_constraintStart_toEndOf="@+id/expense_amount"
         app:layout_constraintTop_toTopOf="parent" />
