@@ -73,7 +73,7 @@ class ExpenseDetailFragment: Fragment() {
     private val SPINNER_PREF_KEY = "spinner_selected_item"
 
     private val handler = Handler()
-    private val updateDelayMillis = 1000
+    private val updateDelayMillis = 5000
 
     private lateinit var currTitle: String
 
@@ -220,7 +220,7 @@ class ExpenseDetailFragment: Fragment() {
                     )
                 )
             }
-            if (expense.amount != 0.0) expenseAmount.setText(expense.amount.toString())
+            if (expense.amount != 0.0) expenseAmount.setText(formatAmount(expense.amount))
             updatePhoto(expense.photoFileName)
         }
     }
@@ -277,5 +277,14 @@ class ExpenseDetailFragment: Fragment() {
             expenseDetailViewModel.deleteExpense()
             findNavController().popBackStack()
         }
+    }
+
+    private fun formatAmount(amount: Double): String {
+        val strAmount = amount.toString()
+
+        if (strAmount.substring(strAmount.indexOf(".")).length < 3)
+            return strAmount + "0"
+
+        return strAmount
     }
 }
