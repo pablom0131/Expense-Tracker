@@ -149,7 +149,7 @@ class ExpenseDetailFragment: Fragment() {
                 }
             }
 
-            expenseReceiptPhoto.setOnClickListener {
+            receiptCamera.setOnClickListener {
                 photoName = "IMG_${Date()}.JPG"
                 val photoFile = File(requireContext().applicationContext.filesDir, photoName)
                 val photoUri = FileProvider.getUriForFile(
