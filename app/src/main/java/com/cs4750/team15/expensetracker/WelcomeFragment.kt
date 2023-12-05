@@ -38,7 +38,9 @@ class WelcomeFragment: Fragment() {
                 findNavController().navigate(WelcomeFragmentDirections.showSpendingAnalysis())
             }
 
-            chatButton.setOnClickListener {  }
+            chatButton.setOnClickListener {
+                findNavController().navigate(WelcomeFragmentDirections.showChat())
+            }
         }
     }
 

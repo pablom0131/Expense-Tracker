@@ -44,11 +44,17 @@
         <action
             android:id="@+id/show_spending_analysis"
             app:destination="@id/spendingAnalysisFragment" />
+        <action
+            android:id="@+id/show_chat"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/spendingAnalysisFragment"
         android:name="com.cs4750.team15.expensetracker.spendinganalysis.SpendingAnalysisFragment"
-        android:label="SpendingAnalysisFragment"
-        tools:layout="@layout/fragment_spending_analysis"/>
+        android:label="SpendingAnalysisFragment" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.cs4750.team15.expensetracker.chat.ChatFragment"
+        android:label="ChatFragment" />
 
 </navigation>
