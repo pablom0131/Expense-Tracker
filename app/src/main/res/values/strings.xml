@@ -13,21 +13,11 @@
     <string name="budget_amount_title">Your monthly budget</string>
     <string name="nav_options_title">Where would you like to go?</string>
     <string-array name="expense_categories_array">
-        <item>Housing</item>
-        <item>Utilities</item>
-        <item>Transportation</item>
         <item>Groceries</item>
-        <item>Convenience</item>
-        <item>Health</item>
-        <item>Insurance</item>
+        <item>Transportation</item>
         <item>Entertainment</item>
         <item>Shopping</item>
-        <item>Home Improvement</item>
-        <item>Education</item>
-        <item>Debt Repayment</item>
-        <item>Gifts/Donations</item>
         <item>Travel</item>
-        <item>Work-Related</item>
         <item>Misc/Other</item>
     </string-array>
 </resources>

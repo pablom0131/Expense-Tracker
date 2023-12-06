@@ -15,4 +15,10 @@
     <color name="office_green">#008227</color>
     <color name="saffron">#F8C52C</color>
     <color name="jet">#3B3A3A</color>
+    <color name="grey">#aaa</color>
+    <color name="button_color">#1E573B</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="red">#F44336</color>
+    <color name="green">#72f542</color>
+    <color name="pink">#f542e9</color>
 </resources>
