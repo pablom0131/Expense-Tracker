@@ -42,10 +42,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
-                android:fontFamily="@font/dm_mono_medium"
+                android:fontFamily="@font/open_sans_extrabold"
                 android:text="@string/expense_title_label"
                 android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/honeydew"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <EditText
@@ -63,10 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:fontFamily="@font/dm_mono_medium"
+        android:fontFamily="@font/open_sans_extrabold"
         android:text="Date"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textColor="@color/honeydew"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <Button
@@ -83,11 +83,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:fontFamily="@font/dm_mono_medium"
+        android:fontFamily="@font/open_sans_extrabold"
         android:text="@string/expense_amount_label"
         android:textAlignment="viewStart"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textColor="@color/honeydew"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -118,10 +118,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:fontFamily="@font/dm_mono_medium"
+        android:fontFamily="@font/open_sans_extrabold"
         android:text="@string/expense_category_label"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textColor="@color/honeydew"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <Spinner
