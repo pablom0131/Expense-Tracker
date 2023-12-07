@@ -41,4 +41,16 @@
                 android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_gchat_user_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="John Grady Cole"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/card_gchat_message_me"
+        app:layout_constraintEnd_toEndOf="@+id/card_gchat_message_me"
+        app:layout_constraintStart_toStartOf="@+id/card_gchat_message_me"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

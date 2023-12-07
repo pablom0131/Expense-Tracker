@@ -54,6 +54,12 @@ class ChatFragment: Fragment() {
     ): View? {
         _binding = FragmentChatBinding.inflate(inflater, container, false)
         binding.recyclerGchat.layoutManager = LinearLayoutManager(context)
+        binding.recyclerGchat.apply {
+            layoutManager = LinearLayoutManager(context).apply {
+                stackFromEnd = true
+                reverseLayout = false
+            }
+        }
 
         val messages = chatViewModel.messages
         val adapter = ChatListAdapter(messages)
@@ -72,6 +78,14 @@ class ChatFragment: Fragment() {
                 showNewMessage()
             }
         }
+
+        val newMessage = ChatMessage(
+            user = "System",
+            msgContent = "Welcome to the PennyWise Chat Room. Ask him some financial questions, and he might help. Maybe."
+        )
+
+        chatViewModel.addMessage(newMessage)
+        binding.recyclerGchat.adapter?.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {
@@ -100,12 +114,13 @@ class ChatFragment: Fragment() {
             var textBoxContents = binding.editGchatMessage.text.toString()
             val newMessage = ChatMessage(
                 user = "You",
-                msgContent = "You said: $textBoxContents"
+                msgContent = textBoxContents
                 )
             binding.editGchatMessage.text.clear()
             chatViewModel.addMessage(newMessage)
             getResponse(textBoxContents)
             binding.recyclerGchat.adapter?.notifyDataSetChanged()
+            binding.recyclerGchat.adapter?.let { binding.recyclerGchat.scrollToPosition(it.itemCount-1) }
         }
     }
 
@@ -118,11 +133,12 @@ class ChatFragment: Fragment() {
             val cutCutResponse = cutResponse.dropLast(2)
             val newMessage = ChatMessage(
                 user = "PennyWise",
-                msgContent = "PennyWise says: $cutCutResponse"
+                msgContent = cutCutResponse
             )
 
             chatViewModel.addMessage(newMessage)
             binding.recyclerGchat.adapter?.notifyDataSetChanged()
+            binding.recyclerGchat.adapter?.let { binding.recyclerGchat.scrollToPosition(it.itemCount-1) }
         }
     }
     fun Fragment.hideKeyboard() {

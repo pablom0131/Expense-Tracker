@@ -9,12 +9,7 @@ import java.util.UUID
 
 class ChatHolder(val binding: MessageBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(message: ChatMessage) {
-        if(message.user == "You"){
-            binding.cardGchatMessageMe.setCardBackgroundColor(Color.BLUE)
-        }
-        else{
-            binding.cardGchatMessageMe.setCardBackgroundColor(Color.GRAY)
-        }
+        binding.textGchatUserOther.text = message.user
         binding.textGchatMessageMe.text = message.msgContent
     }
 }
@@ -32,7 +27,14 @@ class ChatListAdapter(
         val message = messages[position]
         //holder.bind(expense, onExpenseClicked)
         holder.apply {
+            if(message.user == "You"){
+                binding.cardGchatMessageMe.setCardBackgroundColor(Color.BLUE)
+            }
+            else{
+                binding.cardGchatMessageMe.setCardBackgroundColor(Color.GRAY)
+            }
             binding.textGchatMessageMe.text = message.msgContent
+            binding.textGchatUserOther.text = message.user
         }
     }
 
