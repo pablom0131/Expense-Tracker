@@ -105,13 +105,15 @@ class ChatFragment: Fragment() {
             binding.editGchatMessage.text.clear()
             chatViewModel.addMessage(newMessage)
             getResponse(textBoxContents)
+            binding.recyclerGchat.adapter?.notifyDataSetChanged()
         }
     }
 
-    private fun getResponse(msg : String) {
+    private suspend fun getResponse(msg : String) {
         viewLifecycleOwner.lifecycleScope.launch {
             val cb: Callback<String?>? = null
             val response = gptApi.getChatResponse(msg)
+            print(response)
             val cutResponse = response.drop(14)
             val cutCutResponse = cutResponse.dropLast(2)
             val newMessage = ChatMessage(
@@ -120,6 +122,7 @@ class ChatFragment: Fragment() {
             )
 
             chatViewModel.addMessage(newMessage)
+            binding.recyclerGchat.adapter?.notifyDataSetChanged()
         }
     }
     fun Fragment.hideKeyboard() {
