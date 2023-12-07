@@ -22,9 +22,12 @@ class ExpenseRepository private constructor(
             ExpenseDatabase::class.java,
             DATABASE_NAME
         )
+        .allowMainThreadQueries()
         .build()
 
     fun getExpenses(): Flow<List<Expense>> = database.expenseDao().getExpenses()
+
+    fun getSimpleExpenses(): List<Expense> = database.expenseDao().getSimpleExpenses()
 
     suspend fun getExpense(id: UUID): Expense = database.expenseDao().getExpense(id)
 

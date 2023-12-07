@@ -21,9 +21,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cs4750.team15.expensetracker.databinding.FragmentExpenseDetailBinding
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
 import android.text.format.DateFormat
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -32,7 +29,6 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
@@ -125,8 +121,12 @@ class ExpenseDetailFragment: Fragment() {
 
             spinner.adapter = spinnerAdapter
 
+            val currentDataSize = spinnerAdapter.count
+
             val savedPosition = sharedPreferences.getInt(SPINNER_PREF_KEY, 0)
-            spinner.setSelection(savedPosition)
+            val validSavedPosition = if (savedPosition < currentDataSize) savedPosition else 0
+
+            spinner.setSelection(validSavedPosition)
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(

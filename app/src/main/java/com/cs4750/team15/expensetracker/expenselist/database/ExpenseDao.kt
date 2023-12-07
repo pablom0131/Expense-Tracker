@@ -14,6 +14,9 @@ interface ExpenseDao {
     @Query("SELECT * FROM expense")
     fun getExpenses(): Flow<List<Expense>>
 
+    @Query("SELECT * FROM expense")
+    fun getSimpleExpenses(): List<Expense>
+
     @Query("SELECT * FROM expense WHERE id=(:id)")
     suspend fun getExpense(id: UUID): Expense
 
