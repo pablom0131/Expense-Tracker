@@ -26,6 +26,8 @@ class ExpenseRepository private constructor(
 
     fun getExpenses(): Flow<List<Expense>> = database.expenseDao().getExpenses()
 
+    fun getSimpleExpenses(): List<Expense> = database.expenseDao().getSimpleExpenses()
+
     suspend fun getExpense(id: UUID): Expense = database.expenseDao().getExpense(id)
 
     fun updateExpense(expense: Expense) {
