@@ -12,7 +12,7 @@ class ChatHolder(val binding: MessageBinding): RecyclerView.ViewHolder(binding.r
         if(message.user == "You"){
             binding.cardGchatMessageMe.setCardBackgroundColor(Color.BLUE)
         }
-        if(message.user == "You"){
+        else{
             binding.cardGchatMessageMe.setCardBackgroundColor(Color.GRAY)
         }
         binding.textGchatMessageMe.text = message.msgContent

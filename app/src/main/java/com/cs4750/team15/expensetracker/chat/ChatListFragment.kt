@@ -13,8 +13,26 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cs4750.team15.expensetracker.databinding.FragmentChatBinding
 import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.create
+import java.util.concurrent.TimeUnit
+
 
 class ChatFragment: Fragment() {
+
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .readTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .build()
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://0yv0hwtewb.execute-api.us-east-1.amazonaws.com/")
+        .addConverterFactory(ScalarsConverterFactory.create())
+        .client(okHttpClient)
+        .build()
+    private val gptApi: GptApi = retrofit.create<GptApi>()
 
     private var _binding: FragmentChatBinding? = null
     private val binding
@@ -47,11 +65,11 @@ class ChatFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.apply {
             buttonGchatSend.setOnClickListener {
                 hideKeyboard()
                 showNewMessage()
-                getResponse()
             }
         }
     }
@@ -79,20 +97,26 @@ class ChatFragment: Fragment() {
     private fun showNewMessage() {
         viewLifecycleOwner.lifecycleScope.launch {
             binding.editGchatMessage.setBackgroundColor(0)
+            var textBoxContents = binding.editGchatMessage.text.toString()
             val newMessage = ChatMessage(
                 user = "You",
-                msgContent = "You said: " + binding.editGchatMessage.text.toString()
+                msgContent = "You said: $textBoxContents"
                 )
             binding.editGchatMessage.text.clear()
             chatViewModel.addMessage(newMessage)
+            getResponse(textBoxContents)
         }
     }
 
-    private fun getResponse() {
+    private fun getResponse(msg : String) {
         viewLifecycleOwner.lifecycleScope.launch {
+            val cb: Callback<String?>? = null
+            val response = gptApi.getChatResponse(msg)
+            val cutResponse = response.drop(14)
+            val cutCutResponse = cutResponse.dropLast(2)
             val newMessage = ChatMessage(
                 user = "PennyWise",
-                msgContent = "PennyWise says: ur a dumbass"
+                msgContent = "PennyWise says: $cutCutResponse"
             )
 
             chatViewModel.addMessage(newMessage)
