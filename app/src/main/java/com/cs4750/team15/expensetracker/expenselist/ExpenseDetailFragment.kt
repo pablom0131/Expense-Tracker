@@ -125,8 +125,12 @@ class ExpenseDetailFragment: Fragment() {
 
             spinner.adapter = spinnerAdapter
 
+            val currentDataSize = spinnerAdapter.count
+
             val savedPosition = sharedPreferences.getInt(SPINNER_PREF_KEY, 0)
-            spinner.setSelection(savedPosition)
+            val validSavedPosition = if (savedPosition < currentDataSize) savedPosition else 0
+
+            spinner.setSelection(validSavedPosition)
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
