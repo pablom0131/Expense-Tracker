@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.cs4750.team15.expensetracker.R
 import com.cs4750.team15.expensetracker.databinding.FragmentSpendingAnalysisBinding
-import com.cs4750.team15.expensetracker.expenselist.Expense
-import com.cs4750.team15.expensetracker.expenselist.ExpenseRepository
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -19,9 +17,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.MPPointF
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class SpendingAnalysisFragment : Fragment() {
     private var _binding: FragmentSpendingAnalysisBinding? = null
@@ -46,6 +41,11 @@ class SpendingAnalysisFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val expenses = spendingAnalysisViewModel.getExpenses()
+
+        for (expense in expenses){
+            val amount = expense.amount
+            val category = expense.category
+        }
 
         // on below line we are initializing our
         // variable with their ids.
