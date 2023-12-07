@@ -137,8 +137,5 @@ class SpendingAnalysisFragment : Fragment() {
 
         // loading chart
         pieChart.invalidate()
-
-
     }
-
 }
