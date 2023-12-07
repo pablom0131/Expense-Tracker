@@ -10,6 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.cs4750.team15.expensetracker.databinding.FragmentWelcomeScreenBinding
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class WelcomeFragment: Fragment() {
 
@@ -35,6 +40,7 @@ class WelcomeFragment: Fragment() {
         val editor = sharedPreferences.edit()
 
         var budget = ""
+        val today = Calendar.getInstance().time
         binding.apply {
             budgetAmount.setText(sharedPreferences.getString("Budget", "0.00").toString())
             budget = sharedPreferences.getString("Budget", "0.00").toString()
@@ -53,6 +59,8 @@ class WelcomeFragment: Fragment() {
             }
 
             chatButton.setOnClickListener {  }
+
+            welcomeDateDisplay.text = SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH).format(today)
         }
     }
 
