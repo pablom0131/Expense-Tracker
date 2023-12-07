@@ -42,9 +42,25 @@ class SpendingAnalysisFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val expenses = spendingAnalysisViewModel.getExpenses()
 
+        val amountPerCategory = hashMapOf(
+            "Groceries" to 0.0f,
+            "Transportation" to 0.0f,
+            "Entertainment" to 0.0f,
+            "Shopping" to 0.0f,
+            "Travel" to 0.0f,
+            "Misc/Other" to 0.0f
+        )
+
         for (expense in expenses){
-            val amount = expense.amount
-            val category = expense.category
+            val amount = expense.amount.toFloat()
+            when (val category = expense.category) {
+                "Groceries" -> amountPerCategory[category] = amountPerCategory[category]!! + amount
+                "Transportation" -> amountPerCategory[category] = amountPerCategory[category]!! + amount
+                "Entertainment" -> amountPerCategory[category] = amountPerCategory[category]!! + amount
+                "Shopping" -> amountPerCategory[category] = amountPerCategory[category]!! + amount
+                "Travel" -> amountPerCategory[category] = amountPerCategory[category]!! + amount
+                "Misc/Other" -> amountPerCategory[category] = amountPerCategory[category]!! + amount
+            }
         }
 
         // on below line we are initializing our
@@ -93,13 +109,51 @@ class SpendingAnalysisFragment : Fragment() {
 
         // on below line we are creating array list and
         // adding data to it to display in pie chart
+        binding.apply {
+            catId1.visibility = View.INVISIBLE
+            catId2.visibility = View.INVISIBLE
+            catId3.visibility = View.INVISIBLE
+            catId4.visibility = View.INVISIBLE
+            catId5.visibility = View.INVISIBLE
+            catId6.visibility = View.INVISIBLE
+        }
+
         val entries: ArrayList<PieEntry> = ArrayList()
-        entries.add(PieEntry(15f))
-        entries.add(PieEntry(15f))
-        entries.add(PieEntry(15f))
-        entries.add(PieEntry(15f))
-        entries.add(PieEntry(15f))
-        entries.add(PieEntry(25f))
+        var catID = 1
+        amountPerCategory.forEach { (key, value) ->
+            if (value > 0.0f) {
+                entries.add(PieEntry(value))
+                binding.apply {
+                    when (catID) {
+                        1 -> {
+                            catId1.text = key
+                            catId1.visibility = View.VISIBLE
+                        }
+                        2 -> {
+                            catId2.text = key
+                            catId2.visibility = View.VISIBLE
+                        }
+                        3 -> {
+                            catId3.text = key
+                            catId3.visibility = View.VISIBLE
+                        }
+                        4 -> {
+                            catId4.text = key
+                            catId4.visibility = View.VISIBLE
+                        }
+                        5 -> {
+                            catId5.text = key
+                            catId5.visibility = View.VISIBLE
+                        }
+                        6 -> {
+                            catId6.text = key
+                            catId6.visibility = View.VISIBLE
+                        }
+                    }
+                }
+                catID++
+            }
+        }
 
         // on below line we are setting pie data set
         val dataSet = PieDataSet(entries, "Mobile OS")
