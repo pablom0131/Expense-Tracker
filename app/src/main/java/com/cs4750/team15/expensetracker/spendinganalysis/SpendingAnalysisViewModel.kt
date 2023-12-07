@@ -1,4 +1,5 @@
 package com.cs4750.team15.expensetracker.spendinganalysis
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cs4750.team15.expensetracker.expenselist.Expense
@@ -9,6 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SpendingAnalysisViewModel : ViewModel() {
+    val sharedData = MutableLiveData<String>()
     private val expenseRepository = ExpenseRepository.get()
     private val _expenses: List<Expense> = expenseRepository.getSimpleExpenses()
 

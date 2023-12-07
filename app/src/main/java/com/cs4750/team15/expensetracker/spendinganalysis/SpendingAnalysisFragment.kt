@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.cs4750.team15.expensetracker.R
 import com.cs4750.team15.expensetracker.databinding.FragmentSpendingAnalysisBinding
 import com.github.mikephil.charting.animation.Easing
@@ -17,7 +18,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.MPPointF
-import java.text.DecimalFormat
 
 class SpendingAnalysisFragment : Fragment() {
     private var _binding: FragmentSpendingAnalysisBinding? = null
@@ -25,6 +25,8 @@ class SpendingAnalysisFragment : Fragment() {
         get() = checkNotNull(_binding) {
             "Cannot access binding"
         }
+
+    private val args: SpendingAnalysisFragmentArgs by navArgs()
 
     private val spendingAnalysisViewModel: SpendingAnalysisViewModel by viewModels()
 
@@ -205,6 +207,14 @@ class SpendingAnalysisFragment : Fragment() {
             amountPerCategory.forEach { (key, value) ->
                 total += value
             }
+
+            var _remainingBudget = args.budget - total
+            remainingBudget.text = String.format("%.2f", _remainingBudget)
+            if (_remainingBudget < 0) {
+                remainingBudget.setTextColor(resources.getColor(R.color.red))
+                remainingBudget.setTypeface(null, Typeface.BOLD)
+            }
+
             spendingPercentageEntertainment.text =
                 amountPerCategory["Entertainment"]?.let { calculatePercentage(it, total) }
                     ?.let { formatFloat(it) }

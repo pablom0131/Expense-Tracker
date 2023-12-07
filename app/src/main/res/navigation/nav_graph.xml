@@ -49,6 +49,10 @@
         android:id="@+id/spendingAnalysisFragment"
         android:name="com.cs4750.team15.expensetracker.spendinganalysis.SpendingAnalysisFragment"
         android:label="SpendingAnalysisFragment"
-        tools:layout="@layout/fragment_spending_analysis"/>
+        tools:layout="@layout/fragment_spending_analysis">
+        <argument
+            android:name="budget"
+            app:argType="float" />
+    </fragment>
 
 </navigation>
