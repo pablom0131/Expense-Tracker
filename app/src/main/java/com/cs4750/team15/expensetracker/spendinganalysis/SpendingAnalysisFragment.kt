@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.MPPointF
+import java.text.DecimalFormat
 
 class SpendingAnalysisFragment : Fragment() {
     private var _binding: FragmentSpendingAnalysisBinding? = null
@@ -191,5 +192,44 @@ class SpendingAnalysisFragment : Fragment() {
 
         // loading chart
         pieChart.invalidate()
+
+        binding.apply {
+            amountSpentEntertainment.text = amountPerCategory["Entertainment"]?.let { formatFloat(it) }
+            amountSpentGroceries.text = amountPerCategory["Groceries"]?.let { formatFloat(it) }
+            amountSpentMisc.text = amountPerCategory["Misc/Other"]?.let { formatFloat(it) }
+            amountSpentShopping.text = amountPerCategory["Shopping"]?.let { formatFloat(it) }
+            amountSpentTravel.text = amountPerCategory["Travel"]?.let { formatFloat(it) }
+            amountSpentTransportation.text = amountPerCategory["Transportation"]?.let { formatFloat(it) }
+
+            var total = 0.0f
+            amountPerCategory.forEach { (key, value) ->
+                total += value
+            }
+            spendingPercentageEntertainment.text =
+                amountPerCategory["Entertainment"]?.let { calculatePercentage(it, total) }
+                    ?.let { formatFloat(it) }
+            spendingPercentageGroceries.text =
+                amountPerCategory["Groceries"]?.let { calculatePercentage(it, total) }
+                    ?.let { formatFloat(it) }
+            spendingPercentageMisc.text =
+                amountPerCategory["Misc/Other"]?.let { calculatePercentage(it, total) }
+                    ?.let { formatFloat(it) }
+            spendingPercentageShopping.text =
+                amountPerCategory["Shopping"]?.let { calculatePercentage(it, total) }
+                    ?.let { formatFloat(it) }
+            spendingPercentageTravel.text =
+                amountPerCategory["Travel"]?.let { calculatePercentage(it, total) }
+                    ?.let { formatFloat(it) }
+            spendingPercentageTransportation.text =
+                amountPerCategory["Transportation"]?.let { calculatePercentage(it, total) }
+                    ?.let { formatFloat(it) }
+
+        }
+    }
+    private fun formatFloat(amount: Float): String{
+        return String.format("%.2f", amount)
+    }
+    private fun calculatePercentage(amount: Float, total: Float): Float {
+        return String.format("%.2f", (amount/total) * 100).toFloat()
     }
 }
