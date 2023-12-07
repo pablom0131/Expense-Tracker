@@ -55,12 +55,18 @@ class WelcomeFragment: Fragment() {
             }
 
             spendingAnalysisButton.setOnClickListener {
-                findNavController().navigate(WelcomeFragmentDirections.showSpendingAnalysis(String.format("%.2f", budget.toFloat()).toFloat()))
+                findNavController().navigate(
+                    WelcomeFragmentDirections.showSpendingAnalysis(
+                        String.format(
+                            "%.2f",
+                            budget.toFloat()
+                        ).toFloat()
+                    )
+                )
             }
-
-            chatButton.setOnClickListener {  }
-
-            welcomeDateDisplay.text = SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH).format(today)
+            chatButton.setOnClickListener {
+                findNavController().navigate(WelcomeFragmentDirections.showChat())
+            }
         }
     }
 
