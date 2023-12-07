@@ -170,10 +170,10 @@ class SpendingAnalysisFragment : Fragment() {
         val colors: ArrayList<Int> = ArrayList()
         colors.add(resources.getColor(R.color.saffron))
         colors.add(resources.getColor(R.color.teal_200))
-        colors.add(resources.getColor(R.color.green))
+        colors.add(resources.getColor(R.color.red))
         colors.add(resources.getColor(R.color.purple_200))
         colors.add(resources.getColor(R.color.yellow))
-        colors.add(resources.getColor(R.color.red))
+        colors.add(resources.getColor(R.color.green))
 
         // on below line we are setting colors.
         dataSet.colors = colors

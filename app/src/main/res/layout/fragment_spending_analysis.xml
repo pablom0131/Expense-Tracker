@@ -34,7 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/idTVHead"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:orientation="vertical">
