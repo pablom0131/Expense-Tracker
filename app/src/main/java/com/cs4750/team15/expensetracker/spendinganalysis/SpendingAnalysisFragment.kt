@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.cs4750.team15.expensetracker.R
+import com.cs4750.team15.expensetracker.databinding.FragmentSpendingAnalysisBinding
 import com.cs4750.team15.expensetracker.expenselist.Expense
 import com.cs4750.team15.expensetracker.expenselist.ExpenseRepository
 import com.github.mikephil.charting.animation.Easing
@@ -22,11 +24,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class SpendingAnalysisFragment : Fragment() {
-    private val expenseRepository = ExpenseRepository.get()
+    private var _binding: FragmentSpendingAnalysisBinding? = null
+    private val binding
+        get() = checkNotNull(_binding) {
+            "Cannot access binding"
+        }
 
-    private val _expenses: MutableStateFlow<List<Expense>> = MutableStateFlow(emptyList())
-    val expenses: StateFlow<List<Expense>>
-        get() = _expenses.asStateFlow()
+    private val spendingAnalysisViewModel: SpendingAnalysisViewModel by viewModels()
 
     lateinit var pieChart: PieChart
     override fun onCreateView(
@@ -34,17 +38,14 @@ class SpendingAnalysisFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        super.onCreate(savedInstanceState)
-        val view = inflater.inflate(R.layout.fragment_spending_analysis, container, false)
-        pieChart = view.findViewById(R.id.pieChart)
-        return view
+        _binding = FragmentSpendingAnalysisBinding.inflate(inflater, container, false)
+        pieChart = binding.pieChart
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        super.onCreate(savedInstanceState)
-
-
+        val expenses = spendingAnalysisViewModel.getExpenses()
 
         // on below line we are initializing our
         // variable with their ids.
