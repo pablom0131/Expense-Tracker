@@ -10,26 +10,9 @@ import kotlinx.coroutines.launch
 
 class SpendingAnalysisViewModel : ViewModel() {
     private val expenseRepository = ExpenseRepository.get()
-    private val _expenses: MutableStateFlow<List<Expense>> = MutableStateFlow(emptyList())
-    val expenses: StateFlow<List<Expense>> get() = _expenses.asStateFlow()
+    private val _expenses: List<Expense> = expenseRepository.getSimpleExpenses()
 
-    private val _totalExpensesByCategory: MutableStateFlow<Map<String, Expense>> =
-        MutableStateFlow(emptyMap())
-    val totalExpensesByCategory: StateFlow<Map<String, Expense>> get() = _totalExpensesByCategory.asStateFlow()
-
-
-    init {
-        viewModelScope.launch {
-            expenseRepository.getExpenses().collect { expensesList ->
-                _expenses.value = expensesList
-
-                val totalExpensesMap = expensesList
-                    .groupingBy { it.category }
-                    //the below statement is likely broken
-                    .reduce { _, accumulator, expense -> accumulator.apply { expense.amount } }
-
-                _totalExpensesByCategory.value = totalExpensesMap
-            }
-        }
+    fun getExpenses(): List<Expense> {
+        return _expenses
     }
 }
