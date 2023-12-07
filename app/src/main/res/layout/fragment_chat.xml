@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_group_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chat_recycler_view"
+        android:id="@+id/recycler_gchat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="16dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@+id/text_gchat_indicator"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_group_chat" />
     <TextView
         android:id="@+id/text_gchat_indicator"
         android:layout_width="wrap_content"
@@ -45,10 +51,9 @@
             android:inputType="text"
             android:maxLines="6"
             tools:ignore="Autofill" />
-
         <Button
             android:id="@+id/button_gchat_send"
-            android:layout_width="80dp"
+            android:layout_width="64dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:background="?attr/selectableItemBackground"
